@@ -1,0 +1,53 @@
+"*":
+  "atom-beautify":
+    js: {}
+    jsx: {}
+  core:
+    disabledPackages: [
+      "atom-autocomplete-php"
+      "linter-jshint"
+      "atom-beautify"
+      "language-cjsx"
+      "language-javascript-jsx"
+      "linter-json-lint"
+      "pretty-json"
+      "prettier-atom"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "firewatch-syntax"
+    ]
+  editor:
+    preferredLineLength: 120
+    showIndentGuide: true
+    showInvisibles: true
+  "exception-reporting":
+    userId: "3e4560ff-10e6-4d19-b518-258df1795119"
+  "highlight-line":
+    enableBackgroundColor: false
+  "linter-js-standard":
+    checkStyleDevDependencies: true
+  "linter-sass-lint":
+    configFile: ".sass-lint.yml"
+  "linter-ui-default":
+    showPanel: true
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+    prettierOptions:
+      bracketSpacing: false
+      jsxBracketSameLine: true
+      parser: "flow"
+      semi: false
+      singleQuote: true
+    useEslint: true
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+".scss.source":
+  editor:
+    preferredLineLength: 120
+"source.gfm":
+  editor:
+    softWrap: true

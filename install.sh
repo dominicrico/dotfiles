@@ -38,6 +38,10 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 . "$DOTFILES_DIR/install/gem.sh"
 . "$DOTFILES_DIR/install/atom.sh"
 
+# Restore my Atom config
+
+cp -f "$DOTFILES_DIR/atom/config.cson" "$HOME/.atom/config.cson"
+
 if [ -d "$DOTFILES_EXTRA_DIR" -a -f "$DOTFILES_EXTRA_DIR/install.sh" ]; then
   . "$DOTFILES_EXTRA_DIR/install.sh"
 fi
