@@ -1,0 +1,98 @@
+# Add to path
+
+prepend-path() {
+  [ -d $1 ] && PATH="$1:$PATH"
+}
+
+# Sign APK
+
+signAPK()
+{
+   jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore "$1" "$2" "$3"
+}
+
+# Install APK on phone
+
+adb-deploy() {
+    # adb-deploy app.apk
+    adb devices | tail -n +2 | cut -sf 1 | xargs -I {} adb -s {} install -r ${1}
+    terminal-notifier -title "Installation abgeschlossen" -message "${1} wurde auf alle verbundenen Geräte überspielt und installiert…"
+}
+
+# Copy file to phone
+
+adb-copy() {
+    # adb-copy image.jpg /sdcard/Pictures/image.jpg
+    adb devices | tail -n +2 | cut -sf 1 | xargs -I {} adb -s {} push ${1} ${2}
+    adb devices | tail -n +2 | cut -sf 1 | xargs -I {} adb -s {} shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file://${2}
+    terminal-notifier -title "Kopieren abgeschlossen" -message "Datei ${1} wurde auf alle verbundenen Geräte überspielt…"
+}
+
+# Connect phone via wifi
+
+function adb-connect() {
+    # adb-connect
+    adb devices | tail -n +2 | cut -sf 1 | xargs -I {} adb -s {} tcpip 5555
+    echo "Waiting for restart…"
+    sleep 2s
+    adb devices | tail -n +2 | cut -sf 1 | xargs -I {} adb -s {} shell ip addr show wlan0 | grep 10.0.31. | cut -f 1 -d / | cut -f 2 -d t | xargs -I {} adb connect {}
+    echo "You can now disconnect the devices from USB"
+}
+
+# Create a new directory and enter it
+
+mk() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Fuzzy find file/dir
+
+ff() {  find . -type f -iname "$1";}
+fff() { find . -type f -iname "*$1*";}
+fd() {  find . -type d -iname "$1";}
+fdf() { find . -type d -iname "*$1*";}
+
+# Create a data URL from a file
+
+dataurl() {
+  local MIMETYPE=$(file --mime-type "$1" | cut -d ' ' -f2)
+  if [[ $MIMETYPE == "text/*" ]]; then
+    MIMETYPE="${MIMETYPE};charset=utf-8"
+  fi
+  echo "data:${MIMETYPE};base64,$(openssl base64 -in "$1" | tr -d '\n')"
+}
+
+# Webserver
+
+srv() {
+  local DIR=${1:-.}
+  local AVAILABLE_PORT=$(get-port)
+  local PORT=${2:-$AVAILABLE_PORT}
+  if [ "$PORT" -le "1024" ]; then
+    sudo -v
+  fi
+  open "http://localhost:$PORT"
+  superstatic "$DIR" -p "$PORT"
+}
+
+# Get IP from hostname
+
+hostname2ip() {
+  ping -c 1 "$1" | egrep -m1 -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+}
+
+# Find real from shortened url
+
+unshorten() {
+  curl -sIL $1 | sed -n 's/Location: *//p'
+}
+
+# Show duplicate/unique lines
+
+duplines() {
+  sort $1 | uniq -d
+}
+
+uniqlines() {
+  sort $1 | uniq -u
+}

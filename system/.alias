@@ -1,0 +1,57 @@
+# Run NPM installed Modules commands from a local repo
+alias npm-exec='PATH=$(npm bin):$PATH'
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias ls="colorls -1 --dark --sort-dirs --report"
+alias lc="colorls --tree --dark"
+alias tmux="tmux -f ~/.tmux.conf"
+
+# Global aliases
+
+if $(is-supported "alias -g"); then
+  alias -g G="| grep -i"
+  alias -g H="| head"
+  alias -g T="| tail"
+  alias -g L="| less"
+fi
+
+# List declared aliases, functions, paths
+
+alias aliases="alias | sed 's/=.*//'"
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias paths='echo -e ${PATH//:/\\n}'
+
+# Miscellaneous
+
+alias hosts="sudo $EDITOR /etc/hosts"
+alias quit="exit"
+alias week="date +%V"
+alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+
+# Start screen saver
+
+alias afk="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
+
+# Log off
+
+alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Show/hide desktop icons
+
+alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killfinder"
+alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killfinder"
+
+# Reload native apps
+
+alias killfinder="killall Finder"
+alias killdock="killall Dock"
+alias killmenubar="killall SystemUIServer NotificationCenter"
+alias killos="killfinder && killdock && killmenubar"
+
+## Kill all the tabs in Chrome to free up memory
+
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"

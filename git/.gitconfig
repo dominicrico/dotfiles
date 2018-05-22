@@ -1,0 +1,99 @@
+[user]
+    name = Dominic Rico Gómez
+    email = dominic.rico-gomez@visionsbox.de
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = vim
+  filemode = false
+  trustctime = false
+  autocrlf = input
+  pager = diff-so-fancy | less --tabs=4 -RFX
+
+[alias]
+    # one-line log
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+    a = add
+    ap = add -p
+    c = commit --verbose
+    ca = commit -a --verbose
+    cm = commit -m
+    cam = commit -a -m
+    m = commit --amend --verbose
+
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+
+    st = status -s
+    go = checkout
+    cb = checkout -b
+
+    # list branches sorted by last modified
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+
+    #close branch
+    done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+
+[http]
+  sslVerify = false
+
+[filter "gitignore"]
+	clean = "sed '/#gitignore$/'d"
+	smudge = cat
+	clean = sed
+	clean = sed
+	clean = "sed '/#gitignore$/'d"
+
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[credential]
+  helper = osxkeychain
+
+[grep]
+  lineNumber = true
+
+[help]
+  autocorrect = 1
+
+[difftool]
+  prompt = false
+
+[mergetool]
+  prompt = false
+
+[push]
+  default = simple
+  followTags = true
+
+[fetch]
+  prune = true
