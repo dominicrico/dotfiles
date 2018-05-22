@@ -19,7 +19,7 @@ It targets macOS systems. Most of it is stolen from [mathiasbynens](https://gith
 * Development (Node/JS): [nodemon](https://nodemon.io), [superstatic](https://github.com/firebase/superstatic)
 * Graphics: [ffmpeg](https://www.ffmpeg.org), [imagemagick](https://www.imagemagick.org)
 * macOS: [dockutil](https://github.com/kcrawford/dockutil), [chunkwm](https://github.com/koekeishiya/chunkwm), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
-* [macOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
+* [macOS apps](https://github.com/dominicrico/dotfiles/blob/master/install/brew-cask.sh)
 
 ## Install
 
@@ -32,18 +32,18 @@ Install the dotfiles with either Git or curl:
 
 ### Clone with Git
 
-    git clone https://github.com/webpro/dotfiles.git ~/.dotfiles
+    git clone https://github.com/dominicrico/dotfiles.git ~/.dotfiles
     source ~/.dotfiles/install.sh
 
 ### Remotely install using curl
 
 Alternatively, you can install this into `~/.dotfiles` remotely without Git using curl:
 
-    bash -c "`curl -fsSL https://raw.github.com/webpro/dotfiles/master/remote-install.sh`"
+    bash -c "`curl -fsSL https://raw.github.com/dominicrico/dotfiles/master/remote-install.sh`"
 
 Or, using wget:
 
-    bash -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/webpro/dotfiles/master/remote-install.sh`"
+    bash -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/dominicrico/dotfiles/master/remote-install.sh`"
 
 ## The `dotfiles` command
 
