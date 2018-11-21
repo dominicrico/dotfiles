@@ -1,4 +1,4 @@
-COMPUTER_NAME="Coderocket"
+export COMPUTER_NAME="Coderocket"
 
 osascript -e 'tell application "System Preferences" to quit'
 
