@@ -61,7 +61,7 @@ ZSH_THEME="spaceship"
 plugins=(
   git
   tmux
-  osx
+  macos
   zsh-syntax-highlighting
 )
 

@@ -23,14 +23,10 @@ packages=(
   release-it
   superstatic
   tldr
-  electron
   commitizen
   cz-conventional-changelog
   cz-emoji
-  grunt-cli
-  react-native-cli
   create-react-app
-  create-react-native-app
   avn
   avn-nvm
 )

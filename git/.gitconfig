@@ -1,6 +1,6 @@
 [user]
     name = Dominic Rico Gómez
-    email = dominic.rico-gomez@visionsbox.de
+    email = dominic.rico@sevdesk.de
 
 [core]
   excludesfile = ~/.gitignore_global

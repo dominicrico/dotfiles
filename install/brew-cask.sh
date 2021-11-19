@@ -3,24 +3,18 @@ if ! is-macos -o ! is-executable brew; then
   return
 fi
 
-brew tap caskroom/versions
-brew tap caskroom/cask
-brew tap caskroom/fonts
+brew tap homebrew/cask-versions
+brew tap homebrew/cask
+brew tap homebrew/cask-fonts
 
 # Install packages
 
 apps=(
-  atom
-  google-chrome
-  iterm2
-  alfred
   spotify
   forklift
-  spark
-  keeweb
 )
 
-brew cask install "${apps[@]}"
+brew install "${apps[@]}"
 
 # Install useful QuickLook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
@@ -37,5 +31,5 @@ plugins=(
   qlcolorcode
 )
 
-brew cask install "${plugins[@]}"
+brew install "${plugins[@]}"
 

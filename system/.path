@@ -15,11 +15,6 @@ prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 prepend-path "$HOME/.rvm/bin"
-prepend-path "$ANT_HOME/bin"
-prepend-path "$MAVEN_HOME/bin"
-prepend-path "$GRADLE_HOME/bin"
-prepend-path "$ANDROID_HOME/tools"
-prepend-path "$ANDROID_HOME/platform-tools"
 
 
 # Remove duplicates (preserving prepended items)

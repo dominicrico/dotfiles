@@ -18,8 +18,8 @@ apps=(
   ffmpeg
   git
   git-extras
-  gnu-sed --with-default-names
-  grep --with-default-names
+  gnu-sed
+  grep
   imagemagick
   vim --with-luajit --with-override-system-vi
   psgrep
@@ -27,13 +27,10 @@ apps=(
   wget
   curl
   diff-so-fancy
-  ant
-  maven
-  gradle
-  android-sdk
-  android-ndk
   chunkwm
   neofetch
+  tmux
+  zsh-syntax-highlighting
 )
 
 brew install "${apps[@]}"
